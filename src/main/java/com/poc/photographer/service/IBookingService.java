@@ -7,4 +7,6 @@ import java.util.List;
 public interface IBookingService
 {
     List<Booking> getBookings();
+
+    Booking save(Booking booking);
 }

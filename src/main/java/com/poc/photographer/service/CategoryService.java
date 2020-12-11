@@ -26,4 +26,10 @@ public class CategoryService implements ICategoryService
         categoryRepository.findAll().forEach(categories::add);
         return categories;
     }
+
+    @Override
+    public Category save(Category category)
+    {
+        return categoryRepository.save(category);
+    }
 }
