@@ -7,4 +7,5 @@ import java.util.List;
 public interface IOfferingrService
 {
     List<Offering> getOfferings();
+    Offering save(Offering offering);
 }

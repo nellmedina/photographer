@@ -26,3 +26,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+
+api:
+  security:
+    jwtSecret: jwtsecretkeytr1cl3m0n1t0r1n6
+    jwtExpiration: 3600 #seconds

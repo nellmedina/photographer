@@ -28,4 +28,9 @@ public class OfferingService implements IOfferingrService
         offeringRepository.findAll().forEach(offerings::add);
         return offerings;
     }
+
+    @Override
+    public Offering save(Offering offering) {
+        return offeringRepository.save(offering);
+    }
 }
