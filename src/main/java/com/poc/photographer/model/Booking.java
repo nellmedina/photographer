@@ -1,8 +1,5 @@
 package com.poc.photographer.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,14 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
-@Table(name="offering")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Offering
+@Table(name="booking")
+public class Booking
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +23,16 @@ public class Offering
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="sub_category_id")
-    private SubCategory subCategory;
+    @JoinColumn(name="customer_user_id")
+    private UserEntity customerUserId;
 
-    @OneToMany(mappedBy = "offering", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Media> mediaList;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="photographer_user_id")
+    private UserEntity photographerUserId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="offering_id")
+    private Offering offering;
 
     public long getId() {
         return id;
@@ -51,20 +50,28 @@ public class Offering
         this.description = description;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
+    public UserEntity getCustomerUserId() {
+        return customerUserId;
     }
 
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
+    public void setCustomerUserId(UserEntity customerUserId) {
+        this.customerUserId = customerUserId;
     }
 
-    public List<Media> getMediaList() {
-        return mediaList;
+    public UserEntity getPhotographerUserId() {
+        return photographerUserId;
     }
 
-    public void setMediaList(List<Media> mediaList) {
-        this.mediaList = mediaList;
+    public void setPhotographerUserId(UserEntity photographerUserId) {
+        this.photographerUserId = photographerUserId;
+    }
+
+    public Offering getOffering() {
+        return offering;
+    }
+
+    public void setOffering(Offering offering) {
+        this.offering = offering;
     }
 
     @Override
@@ -73,7 +80,7 @@ public class Offering
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Offering category = (Offering) o;
+        Booking category = (Booking) o;
 
         return id == category.id;
     }

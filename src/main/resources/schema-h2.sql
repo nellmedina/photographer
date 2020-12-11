@@ -10,7 +10,7 @@ CREATE TABLE sub_category (
   sub_category_name VARCHAR(100),
   category_id INT NOT NULL,
   CONSTRAINT sub_category_category_fk FOREIGN KEY (category_id) REFERENCES category(id)
-);
+); 
 
 -- for user_entity
 CREATE TABLE user_entity (
@@ -47,9 +47,25 @@ CREATE TABLE offering (
   CONSTRAINT offering_sub_category_fk FOREIGN KEY (sub_category_id) REFERENCES sub_category(id)
 );
 
-
+-- for media
+CREATE TABLE media (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  filepath VARCHAR(100),
+  offering_id INT NOT NULL,
+  CONSTRAINT media_offering_fk FOREIGN KEY (offering_id) REFERENCES offering(id)
+); 
 -- for booking
--- TBA....
+CREATE TABLE booking (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  description VARCHAR(250),
+  customer_user_id INT NOT NULL,
+  photographer_user_id INT NOT NULL,
+  offering_id INT NOT NULL,
+  CONSTRAINT booking_user_customer_fk FOREIGN KEY (customer_user_id) REFERENCES user_entity(id),
+  CONSTRAINT booking_user_photographer_fk FOREIGN KEY (photographer_user_id) REFERENCES user_entity(id),
+  CONSTRAINT booking_offering_fk FOREIGN KEY (offering_id) REFERENCES offering(id)
+);
+
 
 
 
