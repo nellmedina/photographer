@@ -3,6 +3,7 @@ package com.poc.photographer.controller;
 import com.poc.photographer.model.Booking;
 import com.poc.photographer.service.BookingService;
 import com.poc.photographer.service.IBookingService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bookings")
+@Api( tags = "Bookings")
 public class BookingController
 {
     private IBookingService bookingService;

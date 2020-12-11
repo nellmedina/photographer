@@ -2,7 +2,6 @@ package com.poc.photographer.repository;
 
 
 import com.poc.photographer.model.Role;
-import com.poc.photographer.model.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
