@@ -1,5 +1,7 @@
 package com.poc.photographer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +18,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="user_entity")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class UserEntity
 {
     @Id

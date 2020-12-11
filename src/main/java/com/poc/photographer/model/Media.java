@@ -2,7 +2,6 @@ package com.poc.photographer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,29 +10,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
-@Table(name="offering")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Offering
+@Table(name="media")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "offering"})
+public class Media
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
-    @Column(name="description")
-    private String description;
+    @Column(name="filepath")
+    private String filePath;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="sub_category_id")
-    private SubCategory subCategory;
-
-    @OneToMany(mappedBy = "offering", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Media> mediaList;
+    @JoinColumn(name="offering_id")
+    private Offering offering;
 
     public long getId() {
         return id;
@@ -43,28 +37,20 @@ public class Offering
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
+    public Offering getOffering() {
+        return offering;
     }
 
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
-    }
-
-    public List<Media> getMediaList() {
-        return mediaList;
-    }
-
-    public void setMediaList(List<Media> mediaList) {
-        this.mediaList = mediaList;
+    public void setOffering(Offering offering) {
+        this.offering = offering;
     }
 
     @Override
@@ -73,7 +59,7 @@ public class Offering
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Offering category = (Offering) o;
+        Media category = (Media) o;
 
         return id == category.id;
     }
