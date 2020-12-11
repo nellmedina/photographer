@@ -1,5 +1,8 @@
 package com.poc.photographer.controller;
 
+import com.poc.photographer.controller.dto.request.LoginRequest;
+import com.poc.photographer.controller.dto.request.SignUpRequest;
+import com.poc.photographer.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,30 +15,16 @@ import javax.validation.Valid;
 public class AuthController {
 
     @Autowired
-    private AuthApiService authApiService;
+    private AuthService authService;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-        return authApiService.signin(loginRequest);
+    public ResponseEntity<?> signIn(@Valid @RequestBody LoginRequest loginRequest) {
+        return authService.signIn(loginRequest);
     }
 
     @PostMapping("/signup")
-//    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> registerUser(@Valid @ModelAttribute SignUpRequest signUpRequest) {
-        return authApiService.signup(signUpRequest);
-    }
-
-    @PostMapping("/changePassword")
-    public ResponseEntity<?> changeUserPassword(
-            @RequestParam("userId") Long userId,
-            @RequestParam("token") String token,
-            @RequestParam("password") String password) {
-        return authApiService.changeUserPassword(userId, token, password);
-    }
-
-    @PostMapping("/resetPassword")
-    public ResponseEntity<?> resetPassword(@RequestParam("email") String userEmail) {
-        return authApiService.resetPassword(userEmail);
+    public ResponseEntity<?> signUp(@Valid @RequestBody SignUpRequest signUpRequest) {
+        return authService.signUp(signUpRequest);
     }
 
 }
