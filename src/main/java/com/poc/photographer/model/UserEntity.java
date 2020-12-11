@@ -1,6 +1,6 @@
 package com.poc.photographer.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="user_entity")
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@NoArgsConstructor
 public class UserEntity
 {
     @Id

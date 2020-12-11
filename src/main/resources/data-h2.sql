@@ -14,6 +14,8 @@ INSERT INTO sub_category (id, sub_category_name, category_id) VALUES (6, 'Sub Bi
 -- for role and user
 INSERT INTO role (id, role_name) VALUES (1, 'CUSTOMER');
 INSERT INTO role (id, role_name) VALUES (2, 'PHOTOGRAPHER');
+INSERT INTO role (id, role_name) VALUES (3, 'ADMIN');
+
 INSERT INTO user_entity (id, username, password, email) VALUES (1, 'lebron', 'lakers', 'lebron@gmail.com');
 INSERT INTO user_entity (id, username, password, email) VALUES (2, 'kobe', 'lakers', 'kobe@gmail.com');
 INSERT INTO user_entity (id, username, password, email) VALUES (3, 'shaq', 'lakers', 'shaq@gmail.com');
