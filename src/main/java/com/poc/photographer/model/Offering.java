@@ -29,11 +29,19 @@ public class Offering
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="category_id")
+    private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="sub_category_id")
     private SubCategory subCategory;
 
     @OneToMany(mappedBy = "offering", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Media> mediaList;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="user_id")
+    private UserEntity userEntity;
 
     public long getId() {
         return id;
@@ -65,6 +73,22 @@ public class Offering
 
     public void setMediaList(List<Media> mediaList) {
         this.mediaList = mediaList;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

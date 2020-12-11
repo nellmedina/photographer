@@ -5,6 +5,8 @@ import com.poc.photographer.service.IOfferingrService;
 import com.poc.photographer.service.OfferingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,5 +29,11 @@ public class OfferingController
     public List<Offering> getOfferings()
     {
         return offeringrService.getOfferings();
+    }
+
+    @PostMapping
+    public Offering createOfferings(@RequestBody Offering offering)
+    {
+        return offeringrService.save(offering);
     }
 }
