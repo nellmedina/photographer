@@ -3,6 +3,7 @@ package com.poc.photographer.controller;
 import com.poc.photographer.model.Category;
 import com.poc.photographer.service.CategoryService;
 import com.poc.photographer.service.ICategoryService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categories")
+@Api( tags = "Categories")
 public class CategoryController
 {
     private ICategoryService categoryService;
