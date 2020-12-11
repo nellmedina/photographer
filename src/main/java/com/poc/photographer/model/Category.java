@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name="category")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "subCategories"})
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Category
 {
     @Id

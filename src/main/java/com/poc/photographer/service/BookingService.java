@@ -26,4 +26,10 @@ public class BookingService implements IBookingService
         bookingRepository.findAll().forEach(bookings::add);
         return bookings;
     }
+
+    @Override
+    public Booking save(Booking booking)
+    {
+        return bookingRepository.save(booking);
+    }
 }
