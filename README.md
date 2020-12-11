@@ -4,7 +4,10 @@
 
 ### 1. To Run
 
-```
+```bash
+./mvnw spring-boot:run
+
+# if maven exist
 mvn spring-boot:run
 ```
 
@@ -13,6 +16,7 @@ mvn spring-boot:run
 ```
 http://localhost:8080/categories
 ```
+
 ### 3. Docker Commands
 
 Build Image:
@@ -23,10 +27,3 @@ Run Image:
 ```
 docker run --restart=always -d -p 8080:8080 --name photographerContainer photographer
 ```
-
-
-### TODO's
-
-- swagger
-- jwt or basic auth
-- testing
