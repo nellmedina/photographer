@@ -13,16 +13,6 @@ mvn spring-boot:run
 ```
 http://localhost:8080/categories
 ```
-### 3. Docker Commands
-
-Build Image:
-```
-docker build -f Dockerfile -t photographer .
-```
-Run Image:
-```
-docker run --restart=always -d -p 8080:8080 --name photographerContainer photographer
-```
 
 ### TODO's
 
